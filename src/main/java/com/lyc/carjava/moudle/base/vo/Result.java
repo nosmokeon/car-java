@@ -20,6 +20,7 @@ public class Result<T> {
     public static Result OK(Object message)
     {
         Result r = new Result();
+        r.setCode("0000");
         r.setMessage(message);
         r.setResult("success");
         return r;

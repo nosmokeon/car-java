@@ -13,7 +13,7 @@ public class CodeMain {
     private static String userName = "root";
     private static String password = "123456";
     private static String datasource = "java_car";
-    private static String[] includeTables = {"admin"};
+    private static String[] includeTables = {"car_use_record"};
     private static String parentPackage = "com.lyc.carjava.moudle.base";
     private static String author="lyc";
 
@@ -57,7 +57,7 @@ public class CodeMain {
         stConfig.setCapitalMode(true) // 全局大写命名
                 .setNaming(NamingStrategy.underline_to_camel) // 数据库表映射到实体的命名策略
                 .setRestControllerStyle(true);//将controller设置为RestController
-       // stConfig.setInclude(includeTables);//设置需要生成的表
+        stConfig.setInclude(includeTables);//设置需要生成的表
 
         //包配置
         PackageConfig packageConfig = new PackageConfig();
