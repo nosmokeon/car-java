@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/alumnus?useJDBCCompliantTimezoneShift=true&serverTimezone=GMT%2B8
+    druid:
+      max-wait: 6000
+      stat-view-servlet:
+        enable: true
+        url-pattern: /druid/*
+        login-password: 123456
+        login-username: admin
+        allow: 127.0.0.1
+      web-stat-filter:
+        enable: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+mybatis-plus:
+  mapper-locations: classpath*:com/ptg/projectdemo/**/xml/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: assign_uuid
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
