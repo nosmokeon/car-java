@@ -3,7 +3,7 @@ package com.lyc.carjava.moudle.system.vo;
 import lombok.Data;
 
 @Data
-public class CarVo {
+public class UsefulCarVo {
     /**
      * ID
      */
@@ -24,10 +24,6 @@ public class CarVo {
      */
     private String vin;
 
-    /**
-     * 是否报废
-     */
-    private String isDestroied;
 
     /**
      * 现在所在地
@@ -42,10 +38,15 @@ public class CarVo {
     /**
      * 是否正在使用
      */
-    private String is_used;
+    private String isUsed;
 
     /**
      * 使用人
      */
     private String userName;
+
+    /**
+     * 使用人身份证号
+     */
+    private String idCard;
 }

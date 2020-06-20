@@ -26,10 +26,16 @@ public class SysController {
         return Result.OK(adminService.login(loginDto));
     }
 
-    @RequestMapping(value = "/cars",method = RequestMethod.POST)
+    @RequestMapping(value = "/usefulcars",method = RequestMethod.POST)
     @ResponseBody
-    public Result login(@RequestBody PageDto pageDto)  {
-        return Result.OK(carService.carList(pageDto));
+    public Result usefulcars(@RequestBody PageDto pageDto)  {
+        return Result.OK(carService.usefulcarList(pageDto));
+    }
+
+    @RequestMapping(value = "/damagecars",method = RequestMethod.POST)
+    @ResponseBody
+    public Result damagecars(@RequestBody PageDto pageDto)  {
+        return Result.OK(carService.damagecarList(pageDto));
     }
 
 }

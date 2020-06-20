@@ -1,13 +1,12 @@
 package com.lyc.carjava.moudle.base.enums;
 
-public enum CarDestoriedEnum {
-
-    DESTORIED("报废","1"),NORMAL("正常","0");
+public enum CarRepairStateEnum {
+    REPAIR("正在维修","1"),NORMAL("修好","0"),OUT("出厂","2");
 
     private String code;
     private String value;
 
-    private  CarDestoriedEnum(String code, String value) {
+    private  CarRepairStateEnum(String code, String value) {
         this.code = code;
         this.value = value;
     }

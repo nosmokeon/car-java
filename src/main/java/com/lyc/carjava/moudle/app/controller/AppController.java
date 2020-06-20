@@ -3,6 +3,7 @@ package com.lyc.carjava.moudle.app.controller;
 import com.lyc.carjava.advice.exceptions.BizException;
 import com.lyc.carjava.moudle.app.dto.BorrowDto;
 import com.lyc.carjava.moudle.app.dto.RegisterDto;
+import com.lyc.carjava.moudle.app.dto.ReturnDto;
 import com.lyc.carjava.moudle.base.dto.LoginDto;
 import com.lyc.carjava.moudle.base.service.CarService;
 import com.lyc.carjava.moudle.base.service.UserService;
@@ -45,8 +46,8 @@ public class AppController {
 
     @RequestMapping(value = "/return",method = RequestMethod.POST)
     @ResponseBody
-    public Result rreturnCar(@RequestBody BorrowDto borrowDto, UserInfo userInfo) throws BizException {
-        carService.returnCar(userInfo.getUserId(),borrowDto.getCarId());
+    public Result rreturnCar(@RequestBody ReturnDto returnDto, UserInfo userInfo) throws BizException {
+        carService.returnCar(userInfo.getUserId(),returnDto.getCarId(),returnDto.getAddress());
         return Result.OK(null);
     }
 
