@@ -37,11 +37,11 @@ public class CodeMain {
 
         //模板设置
         TemplateConfig templateConfig = new TemplateConfig();
-//        templateConfig.setController(null);
-//        templateConfig.setServiceImpl(null);
-//        templateConfig.setMapper(null);
-//        templateConfig.setService(null);
-//        templateConfig.setXml(null);
+        templateConfig.setController(null);
+        templateConfig.setServiceImpl(null);
+        templateConfig.setMapper(null);
+        templateConfig.setService(null);
+        templateConfig.setXml(null);
 
 
         //数据库设置

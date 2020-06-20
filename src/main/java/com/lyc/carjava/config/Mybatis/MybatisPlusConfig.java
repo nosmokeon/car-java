@@ -6,7 +6,7 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootConfiguration
-@MapperScan(basePackages = "com.ptg.projectdemo.moudle.**.mapper")
+@MapperScan(basePackages = "com.lyc.carjava.moudle.**.mapper")
 public class MybatisPlusConfig {
     //分页插件
     @Bean
