@@ -28,4 +28,6 @@ public class AppController {
     public Result login(@RequestBody LoginDto loginDto) throws BizException {
         return Result.OK(userService.login(loginDto));
     }
+
+
 }
