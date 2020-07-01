@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.carjava.modules.base.mapper.CarMapper">
+<select id="usefulcars" resultType="com.lyc.carjava.modules.system.vo.UsefulCarVo">
+select ID,CAR_NUMBER,CAR_TYPE,VIN,NOW_PLACE,REMIAN_POWER,IS_USED,USER_NAME,ID_CARD
+from
+(select a.*
+ from (select c.*, 1 as IS_USED, u.USER_NAME as USER_NAME,u.ID_CARD as ID_CARD
+     from car c,
+     user u
+     where c.DEL_FLAG = '0'
+     and c.ID in (
+     select CAR_ID
+     from car_use_record
+     where CAR_ID = c.ID
+     and car_use_record.USE_STATE = '1'
+     and car_use_record.DEL_FLAG = '0'
+     )
+     and u.ID in (
+     select USER_ID
+     from car_use_record
+     where CAR_ID = c.ID
+     and car_use_record.USE_STATE = '1'
+     and car_use_record.DEL_FLAG = '0'
+     )) a
+ union all
+ select *
+ from (select c.*, 0 as IS_USED, '无' as USER_NAME,'无' as ID_CARD
+     from car c
+     where c.DEL_FLAG = '0'
+     and c.ID not in (
+     select CAR_ID
+     from car_use_record
+     where CAR_ID = c.ID
+     and car_use_record.USE_STATE = '1'
+     and car_use_record.DEL_FLAG = '0'
+     )) b
+) d
+where d.IS_DESTROIED = '0' and not exists(select * from car_repair_record repair where repair.CAR_ID = d.ID and (repair.REPAIR_STATE = '1' or repair.REPAIR_STATE = '0' ) and repair.DEL_FLAG = '0')
+order by d.IS_USED desc ,d.REMIAN_POWER ASC
+limit #{current},#{pageSize};
+</select>
+
+    <select id="damagecars" resultType="com.lyc.carjava.modules.system.vo.DamageCarVo">
+            select ID, CAR_NUMBER, CAR_TYPE, VIN, IS_DESTROIED, NOW_PLACE, REMIAN_POWER, USER_NAME, ID_CARD
+            from
+            (
+                select c.*,'无'as USER_NAME,'无' as ID_CARD
+                from car c
+                where c.IS_DESTROIED = '1' and c.DEL_FLAG = '0'
+                union all
+                select c.*,u.USER_NAME,u.ID_CARD
+                from car c,user u
+                where c.DEL_FLAG = '0' and c.IS_DESTROIED = '0' and exists(select * from car_repair_record r where r.DEL_FLAG = '0' and(r.REPAIR_STATE = '1' or r.REPAIR_STATE = '0' ) and r.CAR_ID = c.ID)
+                    and u.ID = (select r.USER_ID from car_repair_record r where r.DEL_FLAG = '0' and(r.REPAIR_STATE = '1' or r.REPAIR_STATE = '0' ) and r.CAR_ID = c.ID)
+            ) re
+            order by re.IS_DESTROIED desc
+            limit #{current},#{pageSize};
+    </select>
+</mapper>
