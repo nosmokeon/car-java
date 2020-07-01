@@ -2,7 +2,7 @@ package com.lyc.carjava.config.shiro;
 
 
 
-import com.lyc.carjava.moudle.base.vo.TestToken;
+import com.lyc.carjava.modules.base.vo.TestToken;
 import com.lyc.carjava.util.JWTUtil;
 import com.lyc.carjava.util.RedisUtil;
 import lombok.SneakyThrows;
