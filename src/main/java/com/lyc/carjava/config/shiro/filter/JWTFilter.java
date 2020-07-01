@@ -3,8 +3,8 @@ package com.lyc.carjava.config.shiro.filter;
 import com.alibaba.fastjson.JSONObject;
 
 import com.lyc.carjava.advice.exceptions.BizException;
-import com.lyc.carjava.moudle.base.vo.Result;
-import com.lyc.carjava.moudle.base.vo.TestToken;
+import com.lyc.carjava.modules.base.vo.Result;
+import com.lyc.carjava.modules.base.vo.TestToken;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
