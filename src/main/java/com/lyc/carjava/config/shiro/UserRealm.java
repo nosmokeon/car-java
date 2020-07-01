@@ -2,7 +2,7 @@ package com.lyc.carjava.config.shiro;
 
 
 
-import com.lyc.carjava.moudle.base.vo.TestToken;
+import com.lyc.carjava.modules.base.vo.TestToken;
 import com.lyc.carjava.util.JWTUtil;
 import com.lyc.carjava.util.RedisUtil;
 import lombok.SneakyThrows;
@@ -16,8 +16,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
