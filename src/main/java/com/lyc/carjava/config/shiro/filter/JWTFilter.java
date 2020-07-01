@@ -1,13 +1,15 @@
 package com.lyc.carjava.config.shiro.filter;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import com.lyc.carjava.advice.exceptions.BizException;
-import com.lyc.carjava.modules.base.vo.Result;
-import com.lyc.carjava.modules.base.vo.TestToken;
+import com.lyc.carjava.moudle.base.vo.Result;
+import com.lyc.carjava.moudle.base.vo.TestToken;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
@@ -51,10 +53,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws BizException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String token = httpServletRequest.getHeader("token");
-        if(token == null)
-        {
-            throw new BizException("null token");
-        }
         //用户凭据
         TestToken testToken = new TestToken(token);
         //执行登录

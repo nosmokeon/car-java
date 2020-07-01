@@ -45,22 +45,9 @@ public class ShiroConfig {
          */
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         //配置不被拦截的链接
-        filterChainDefinitionMap.put("/sys/login", "anon"); //登录接口排除
-        filterChainDefinitionMap.put("/app/login", "anon"); //登录接口排除
-        filterChainDefinitionMap.put("/app/register", "anon");
-        filterChainDefinitionMap.put("**/doc.html", "anon");
-        filterChainDefinitionMap.put("**/*.js", "anon");
-        filterChainDefinitionMap.put("**/*.css", "anon");
-        filterChainDefinitionMap.put("**/*.html", "anon");
-        filterChainDefinitionMap.put("**/*.svg", "anon");
-        filterChainDefinitionMap.put("**/*.jpg", "anon");
-        filterChainDefinitionMap.put("**/*.png", "anon");
-        filterChainDefinitionMap.put("**/*.ico", "anon");
-        filterChainDefinitionMap.put("/druid/**", "anon");
-        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-        filterChainDefinitionMap.put("/swagger**/**", "anon");
-        filterChainDefinitionMap.put("/webjars/**", "anon");
-        filterChainDefinitionMap.put("/v2/**", "anon");
+        filterChainDefinitionMap.put("/system/login","anon");//登录放行
+        filterChainDefinitionMap.put("/app/login","anon");//登录放行
+        filterChainDefinitionMap.put("/app/register","anon");//注册放行
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         //添加自己的Filter，

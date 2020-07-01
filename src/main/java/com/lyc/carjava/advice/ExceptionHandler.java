@@ -2,7 +2,7 @@ package com.lyc.carjava.advice;
 
 
 import com.lyc.carjava.advice.exceptions.BizException;
-import com.lyc.carjava.modules.base.vo.Result;
+import com.lyc.carjava.moudle.base.vo.Result;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
