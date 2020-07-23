@@ -57,4 +57,24 @@ limit #{current},#{pageSize};
             order by re.IS_DESTROIED desc
             limit #{current},#{pageSize};
     </select>
+
+    <select id="canBorrowedCars" resultType="com.lyc.carjava.modules.app.vo.CanBorrowCarVo">
+        select ID,CAR_NUMBER,CAR_TYPE,VIN,NOW_PLACE,REMIAN_POWER,IS_USED
+        from(
+            select c.*, 0 as IS_USED
+            from car c
+            where c.DEL_FLAG = '0' and not exists (
+            select *
+            from car_use_record
+            where car_use_record.CAR_ID = c.ID
+                and car_use_record.USE_STATE = '1'
+                and car_use_record.DEL_FLAG = '0'
+            )
+
+        ) d
+        where d.IS_DESTROIED = '0' and not exists(select * from car_repair_record repair where repair.CAR_ID = d.ID and (repair.REPAIR_STATE = '1' or repair.REPAIR_STATE = '0' ) and repair.DEL_FLAG = '0')
+        and d.REMIAN_POWER > 20
+        order by d.IS_USED desc ,d.REMIAN_POWER ASC
+        limit #{current},#{pageSize};
+    </select>
 </mapper>

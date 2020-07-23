@@ -5,6 +5,7 @@ import com.lyc.carjava.modules.app.dto.BorrowDto;
 import com.lyc.carjava.modules.app.dto.RegisterDto;
 import com.lyc.carjava.modules.app.dto.ReturnDto;
 import com.lyc.carjava.modules.base.dto.LoginDto;
+import com.lyc.carjava.modules.base.dto.PageDto;
 import com.lyc.carjava.modules.base.service.CarService;
 import com.lyc.carjava.modules.base.service.UserService;
 import com.lyc.carjava.modules.base.vo.Result;
@@ -16,10 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/app")
 @Slf4j
 @Api(tags = "用户接口")
+@CrossOrigin
 public class AppController {
 
     @Autowired
@@ -27,6 +31,8 @@ public class AppController {
 
     @Autowired
     CarService carService;
+
+
 
     @ApiOperation(value = "用户注册",httpMethod = "POST")
     @RequestMapping(value = "/register",method = RequestMethod.POST)
@@ -57,6 +63,13 @@ public class AppController {
     public Result rreturnCar(@RequestBody ReturnDto returnDto, @ApiIgnore UserInfo userInfo) throws BizException {
         carService.returnCar(userInfo.getUserId(),returnDto.getCarId(),returnDto.getAddress());
         return Result.OK(null);
+    }
+
+    @ApiOperation(value = "可用车列表",httpMethod = "POST")
+    @RequestMapping(value = "/carlist",method = RequestMethod.POST)
+    @ResponseBody
+    public Result carlist(@RequestBody PageDto pageDto, @ApiIgnore UserInfo userInfo) throws BizException {
+        return Result.OK(carService.canBorrowedCar(pageDto));
     }
 
 }

@@ -9,7 +9,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lyc
- * @since 2020-06-20
+ * @since 2020-07-22
  */
 public class CarTrafficViolationRecord implements Serializable {
 

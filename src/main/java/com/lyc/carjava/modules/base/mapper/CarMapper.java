@@ -1,5 +1,6 @@
 package com.lyc.carjava.modules.base.mapper;
 
+import com.lyc.carjava.modules.app.vo.CanBorrowCarVo;
 import com.lyc.carjava.modules.base.entity.Car;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lyc.carjava.modules.system.vo.DamageCarVo;
@@ -21,4 +22,6 @@ public interface CarMapper extends BaseMapper<Car> {
     public List<UsefulCarVo> usefulcars(@Param("current") int current, @Param("pageSize") int pageSize);
 
     public List<DamageCarVo> damagecars(@Param("current") int current, @Param("pageSize") int pageSize);
+
+    public List<CanBorrowCarVo> canBorrowedCars(@Param("current") int current, @Param("pageSize") int pageSize);
 }

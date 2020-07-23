@@ -13,8 +13,8 @@ public class CodeMain {
     private static String userName = "root";
     private static String password = "123456";
     private static String datasource = "java_car";
-    private static String[] includeTables = {"car_use_record"};
-    private static String parentPackage = "com.lyc.carjava.moudle.base";
+    private static String[] includeTables = {"car_traffic_violation_record"};
+    private static String parentPackage = "com.lyc.carjava.modules.base";
     private static String author="lyc";
 
 
@@ -38,10 +38,10 @@ public class CodeMain {
         //模板设置
         TemplateConfig templateConfig = new TemplateConfig();
         templateConfig.setController(null);
-        templateConfig.setServiceImpl(null);
-        templateConfig.setMapper(null);
-        templateConfig.setService(null);
-        templateConfig.setXml(null);
+//        templateConfig.setServiceImpl(null);
+////        templateConfig.setMapper(null);
+////        templateConfig.setService(null);
+////        templateConfig.setXml(null);
 
 
         //数据库设置

@@ -16,6 +16,11 @@ spring:
         enable: true
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    view:
+      prefix:  classpath:/templates/
+      suffix: .html
 
 mybatis-plus:
   mapper-locations: classpath*:com/lyc/carjava/**/xml/*Mapper.xml

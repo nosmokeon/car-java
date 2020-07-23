@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/sys")
 @Slf4j
 @Api(tags = "管理员接口")
+@CrossOrigin
 public class SysController {
     @Autowired
     AdminService adminService;

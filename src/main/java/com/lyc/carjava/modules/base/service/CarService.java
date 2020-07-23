@@ -1,6 +1,7 @@
 package com.lyc.carjava.modules.base.service;
 
 import com.lyc.carjava.advice.exceptions.BizException;
+import com.lyc.carjava.modules.app.vo.CanBorrowCarVo;
 import com.lyc.carjava.modules.base.dto.PageDto;
 import com.lyc.carjava.modules.base.entity.Car;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -31,4 +32,6 @@ public interface CarService extends IService<Car> {
     public void addcar(CarDto carDto) throws BizException;
 
     public void delcar(IdDto idDto) throws BizException;
+
+    public List<CanBorrowCarVo> canBorrowedCar(PageDto pageDto);
 }
