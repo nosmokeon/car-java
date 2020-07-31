@@ -12,7 +12,8 @@ public class CarJavaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CarJavaApplication.class, args);
-        log.info("***** swagger: http://localhost:8080/car/swagger-ui.html *********");
+        log.info("***** swagger: http://localhost:8090/car/swagger-ui.html *********");
     }
+
 
 }
